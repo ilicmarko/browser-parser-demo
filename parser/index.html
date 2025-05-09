@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Parser & Preload Scanner Demo</title>
+    <link rel="stylesheet" href="/parser/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="controls">
+            <button id="parseNextBtn">Parse Next Line</button>
+            <button id="togglePreloadBtn">Enable Preload Scanner</button>
+            <button id="resetBtn">Reset</button>
+        </div>
+
+        <div class="content">
+            <div class="code-section">
+                <h2>HTML Code</h2>
+                <pre id="codeDisplay"></pre>
+            </div>
+
+            <div class="dom-section">
+                <h2>DOM Tree</h2>
+                <pre id="domTree"></pre>
+            </div>
+
+            <div class="preload-section">
+                <h2>Preload Scanner</h2>
+                <pre id="preloadDisplay"></pre>
+            </div>
+
+            <div class="messages-section">
+                <h2>Messages</h2>
+                <div id="messages"></div>
+            </div>
+        </div>
+    </div>
+    <script src="/parser/script.js"></script>
+</body>
+</html>
