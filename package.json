@@ -1,0 +1,15 @@
+{
+  "name": "preload-scanner",
+  "version": "1.0.0",
+  "description": "HTML Parser & Preload Scanner Demo",
+  "scripts": {
+    "prestart": "node scripts/generate-index.js",
+    "start": "serve .",
+    "predev": "node scripts/generate-index.js",
+    "dev": "serve ."
+  },
+  "dependencies": {
+    "marked": "^12.0.0",
+    "serve": "^14.2.1"
+  }
+}

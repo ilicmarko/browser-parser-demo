@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Web Development Blog</title>
+
+    <!-- Fix 1: Move render-blocking script to end of body -->
+    <!-- Fix 2: Preload critical CSS -->
+    <link rel="preload" href="/demo/styles.css" as="style">
+    <link rel="stylesheet" href="/demo/styles.css">
+
+    <!-- Fix 3: Add preconnect for external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+
+    <!-- Fix 4: Preload hero image -->
+    <link rel="preload" as="image" href="./header.jpg">
+    <style>
+        .hero-image {
+            width: 100%;
+            height: 500px;
+            background-image: url('./header.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <nav class="nav-container">
+            <div class="logo">WebDev Blog</div>
+            <ul class="nav-links">
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#">Articles</a></li>
+                <li><a href="#">Tutorials</a></li>
+                <li><a href="#">Resources</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero-image">
+        <div class="hero-overlay">
+            <div class="hero-content">
+                <h1>Master Modern Web Development</h1>
+                <p>Learn the latest techniques and best practices in web development</p>
+                <button class="cta-button">Start Learning</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <main class="content">
+            <section class="featured-articles">
+                <h2>Featured Articles</h2>
+                <div class="article-grid">
+                    <article class="article-card">
+                        <!-- Fix 5: Add loading="lazy" for below-the-fold images -->
+                        <img src="https://picsum.photos/400/300?random=1" alt="Web Performance" loading="lazy">
+                        <div class="article-content">
+                            <h3>Optimizing Web Performance</h3>
+                            <p>Learn how to make your websites lightning fast with modern optimization techniques.</p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </div>
+                    </article>
+                    <article class="article-card">
+                        <img src="https://picsum.photos/400/300?random=2" alt="CSS Grid" loading="lazy">
+                        <div class="article-content">
+                            <h3>Mastering CSS Grid</h3>
+                            <p>Create complex layouts with ease using the power of CSS Grid.</p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </div>
+                    </article>
+                    <article class="article-card">
+                        <img src="https://picsum.photos/400/300?random=3" alt="JavaScript" loading="lazy">
+                        <div class="article-content">
+                            <h3>Modern JavaScript Patterns</h3>
+                            <p>Explore the latest JavaScript features and design patterns.</p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="newsletter-section">
+                <div class="newsletter-content">
+                    <h2>Stay Updated</h2>
+                    <p>Subscribe to our newsletter for the latest web development tips and tricks.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Enter your email">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Fix 6: Add resource hints for API endpoints -->
+            <link rel="preconnect" href="https://jsonplaceholder.typicode.com">
+            <section class="api-demo">
+                <h2>Latest Posts</h2>
+                <button onclick="fetchData()" class="load-posts">Load Latest Posts</button>
+                <div id="data"></div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Fix 7: Move script to end of body and add preload -->
+    <link rel="preload" href="https://slowfil.es/file?type=js&delay=2000" as="script">
+    <script src="https://slowfil.es/file?type=js&delay=2000"></script>
+    <script>
+        function fetchData() {
+            fetch('https://jsonplaceholder.typicode.com/posts/1')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('data').textContent = JSON.stringify(data, null, 2);
+                });
+        }
+    </script>
+</body>
+</html>
